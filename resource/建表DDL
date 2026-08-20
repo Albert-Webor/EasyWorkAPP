@@ -1,0 +1,28 @@
+-- 单词表：存储单词的基础信息
+CREATE TABLE ael_word (
+    word TEXT NOT NULL PRIMARY KEY,              -- 单词
+    phonetic TEXT,                      -- 音标
+    meaning TEXT NOT NULL,              -- 最常见/核心含义
+    part_of_speech TEXT,                -- 词性
+    level TEXT                          -- 英语等级，如 B1、B2、C1
+);
+
+
+-- 单词含义表：存储一个单词的其他含义
+CREATE TABLE ael_word_meaning (
+    word TEXT NOT NULL,                 -- 单词
+    seq_num INTEGER NOT NULL,           -- 含义序号，同一个单词从 1 开始
+    meaning TEXT NOT NULL,              -- 单词含义
+    part_of_speech TEXT,                -- 该含义对应的词性
+    PRIMARY KEY (word, seq_num)
+);
+
+
+-- 单词含义例句表：存储每个具体含义对应的例句
+CREATE TABLE ael_word_meaning_example (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- 例句 ID
+    word TEXT NOT NULL,                   -- 单词
+    seq_num INTEGER NOT NULL,             -- 对应的含义序号
+    example TEXT NOT NULL,                -- 英文例句
+    example_translation TEXT              -- 中文例句翻译
+);
