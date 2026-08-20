@@ -18,14 +18,19 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun HomeScreen(
-    onEnglishClick: () -> Unit
+    onAelClick: () -> Unit,
+    onNotesClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp, vertical = 32.dp),
+            .padding(
+                horizontal = 24.dp,
+                vertical = 32.dp
+            ),
         verticalArrangement = Arrangement.Top
     ) {
+
         Text(
             text = "EasyWork",
             style = MaterialTheme.typography.headlineLarge
@@ -47,8 +52,9 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // 英语学习
         Card(
-            onClick = onEnglishClick,
+            onClick = onAelClick,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
             elevation = CardDefaults.cardElevation(
@@ -58,6 +64,7 @@ fun HomeScreen(
             Column(
                 modifier = Modifier.padding(24.dp)
             ) {
+
                 Text(
                     text = "📚",
                     style = MaterialTheme.typography.headlineMedium
@@ -74,6 +81,42 @@ fun HomeScreen(
 
                 Text(
                     text = "单词、阅读与英语学习",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // 我的笔记
+        Card(
+            onClick = onNotesClick,
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 4.dp
+            )
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp)
+            ) {
+
+                Text(
+                    text = "📝",
+                    style = MaterialTheme.typography.headlineMedium
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = "我的笔记",
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Text(
+                    text = "管理我的 Markdown 笔记",
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

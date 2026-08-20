@@ -1,17 +1,10 @@
-package com.shaun.easywork.data.dao
+package com.shaun.easywork.data.ael
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.shaun.easywork.data.entity.WordEntity
-import com.shaun.easywork.data.entity.WordMeaningEntity
-import com.shaun.easywork.data.entity.WordMeaningExampleEntity
-/*
-备注: 访问数据库的对象(执行SQL的对象)
-
-*/
 
 @Dao
-interface WordDao {
+interface AelDao {
 
     // =========================
     // ael_word
@@ -20,7 +13,7 @@ interface WordDao {
     /**
      * 查询所有单词
      */
-    @Query("SELECT * FROM ael_word ORDER BY word")
+    @Query("SELECT * FROM ael_word")
     suspend fun getAllWords(): List<WordEntity>
 
     /**

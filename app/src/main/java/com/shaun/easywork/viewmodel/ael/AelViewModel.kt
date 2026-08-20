@@ -1,16 +1,17 @@
-package com.shaun.easywork.data.viewmodel
+package com.shaun.easywork.viewmodel.ael
 
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
-import com.shaun.easywork.data.dao.WordDao
+import com.shaun.easywork.data.ael.AelDao
+import com.shaun.easywork.data.ael.WordEntity
 import kotlinx.coroutines.launch
-import com.shaun.easywork.data.entity.WordEntity
+import kotlinx.coroutines.delay
 
-class WordViewModel(
-    private val wordDao: WordDao
+class AelViewModel(
+    private val aelDao: AelDao
 ) : ViewModel() {
 
     var word by mutableStateOf<WordEntity?>(null)
@@ -27,7 +28,7 @@ class WordViewModel(
 
     fun loadWords() {
         viewModelScope.launch {
-            words = wordDao.getAllWords()
+            words = aelDao.getAllWords()
 
             if (words.isNotEmpty()) {
                 currentIndex = 0
@@ -46,7 +47,7 @@ class WordViewModel(
         }else {
             message = "已经是最后一个"
             viewModelScope.launch {
-                kotlinx.coroutines.delay(1000)
+                delay(1000)
                 message = null
             }
         }
@@ -60,7 +61,7 @@ class WordViewModel(
             message = "已经是第一个"
 
             viewModelScope.launch {
-                kotlinx.coroutines.delay(1000)
+                delay(1000)
                 message = null
             }
         }

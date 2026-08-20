@@ -1,4 +1,4 @@
-package com.shaun.easywork.data.entity
+package com.shaun.easywork.data.ael
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

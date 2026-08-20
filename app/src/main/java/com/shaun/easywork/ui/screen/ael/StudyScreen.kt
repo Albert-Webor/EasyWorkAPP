@@ -1,4 +1,4 @@
-package com.shaun.easywork.ui.screen.english
+package com.shaun.easywork.ui.screen.ael
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,20 +12,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.shaun.easywork.data.viewmodel.WordViewModel
+import com.shaun.easywork.ui.screen.ael.style.StudyScreenStyle
+import com.shaun.easywork.viewmodel.ael.AelViewModel
 
 @Composable
 fun StudyScreen(
-    viewModel: WordViewModel,
+    viewModel: AelViewModel,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(24.dp)
+            .padding(StudyScreenStyle.ScreenPadding)
     ) {
 
         // 返回按钮
@@ -42,37 +41,40 @@ fun StudyScreen(
                 .fillMaxWidth()
                 .align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(
+                StudyScreenStyle.ContentSpacing
+            )
         ) {
 
             Text(
                 text = viewModel.word?.word ?: "加载中...",
-                fontSize = 45.sp
+                fontSize = StudyScreenStyle.WordFontSize
             )
 
             Text(
                 text = viewModel.word?.phonetic ?: "",
-                fontSize = 24.sp
+                fontSize = StudyScreenStyle.PhoneticFontSize
             )
 
             Text(
                 text = viewModel.word?.part_of_speech ?: "",
-                fontSize = 20.sp
+                fontSize = StudyScreenStyle.PartOfSpeechFontSize
             )
 
             Text(
                 text = viewModel.word?.meaning ?: "",
-                fontSize = 30.sp
+                fontSize = StudyScreenStyle.MeaningFontSize
             )
         }
 
+        // Message
         if (viewModel.message != null) {
             Text(
                 text = viewModel.message!!,
                 modifier = Modifier
                     .align(Alignment.Center)
-                    .padding(16.dp),
-                fontSize = 15.sp
+                    .padding(StudyScreenStyle.MessagePadding),
+                fontSize = StudyScreenStyle.MessageFontSize
             )
         }
 

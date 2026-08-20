@@ -1,16 +1,16 @@
-package com.shaun.easywork.data.viewmodel
+package com.shaun.easywork.viewmodel.ael
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.shaun.easywork.data.dao.WordDao
+import com.shaun.easywork.data.ael.AelDao
 
-class WordViewModelFactory(
-    private val wordDao: WordDao
+class AelViewModelFactory(
+    private val aelDao: AelDao
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(WordViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(AelViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return WordViewModel(wordDao) as T
+            return AelViewModel(aelDao) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class")

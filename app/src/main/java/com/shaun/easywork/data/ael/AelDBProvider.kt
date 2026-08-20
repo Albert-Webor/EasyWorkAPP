@@ -1,4 +1,4 @@
-package com.shaun.easywork.data.database
+package com.shaun.easywork.data.ael
 
 import android.content.Context
 import androidx.room.Room
@@ -15,17 +15,17 @@ DAO
 Data
 * */
 
-object AmericanEnglishDatabaseProvider {
+object AelDBProvider {
 
     @Volatile
-    private var INSTANCE: AmericanEnglishDatabase? = null
+    private var INSTANCE: AelDB? = null
 
-    fun getDatabase(context: Context): AmericanEnglishDatabase {
+    fun getDatabase(context: Context): AelDB {
         return INSTANCE ?: synchronized(this) {
 
             INSTANCE ?: Room.databaseBuilder(
                 context.applicationContext,
-                AmericanEnglishDatabase::class.java,
+                AelDB::class.java,
                 "AmericanEnglishLearning"
             )
                 .createFromAsset("AmericanEnglishLearning")

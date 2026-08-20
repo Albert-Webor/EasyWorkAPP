@@ -1,4 +1,4 @@
-package com.shaun.easywork.ui.screen.english
+package com.shaun.easywork.ui.screen.ael
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
